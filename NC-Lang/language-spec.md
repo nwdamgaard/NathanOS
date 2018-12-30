@@ -37,6 +37,14 @@ You can explicitly define the integer type using `:`. The `:` goes between the i
 To define a character as a literal, you must enclose the character in single quotes.
 For example, `'g'` would be a `char` containing the letter g. Characters are encoded in ASCII, so in reality the actual data that would be contained by the `char` would be 103 and not g.
 
+### Program Entrypoint
+Programs written in NC always begin at `main`. The `main` function takes no parameters, but has one output of type `int16` for the error code. A code of 0 is considered successful.
+An example of a `main` declaration would be this:
+`func main (out int16 errorCode;) (`
+`   set errorCode 0;`
+`   return;`
+`);`
+
 ## Built-in Datatypes
 `char` is an 8-bit datatype very similar to C's `char`. It is technically an integer, but it is the only datatype that can contain a character literal.
 
@@ -78,6 +86,9 @@ The requirements are as follows:
 
 `Variable` is the identifier of the variable you wish to set.
 `Value` is the value of the variable being set.
+
+### The in and out declarers
+`in` and `out` are very similar to `var`. They have the same requirements, however they may only be used in the argument list of a `func` declarer. `In` defines an input parameter, and `out` defines an output of the function.
 
 ## Creating a new datatype
 This is where the "sort-of" object orientation comes in.
