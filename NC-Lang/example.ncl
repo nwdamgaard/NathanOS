@@ -6,3 +6,7 @@ func example_function () (
     set myvar 10;
     return;
 );
+
+func main () (
+    call example_function ();
+);

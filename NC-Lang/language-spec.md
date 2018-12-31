@@ -114,3 +114,10 @@ Example:
 `        set age 27;`
 `    );`
 `);`
+
+## Call a function
+The `call` declarer is used to execute a function.
+Here are the requirements:
+`*name* (*arguments*)`
+`Name` is the identifier for the function being called.
+`Arguments` is the list of values the function uses.
