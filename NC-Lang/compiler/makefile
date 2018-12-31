@@ -7,4 +7,4 @@ all:
 	$(CC) $(src) -o $(proj_name)
 
 clean:
-	rm -f ncc
+	rm -f $(proj_name)
