@@ -1,6 +1,6 @@
 
 proj_name = ncc
-src = main.cpp
+src = main.cpp expressions.cpp
 CC = g++
 
 all:

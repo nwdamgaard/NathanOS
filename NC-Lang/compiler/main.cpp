@@ -4,17 +4,7 @@
 #include <fstream>
 #include <sstream>
 
-std::string::iterator pushThroughBrackets(std::string::iterator it, std::string* curString) {
-    while(*it != ')') {
-        curString->push_back(*it);
-        if(*it == '(') {
-            it++;
-            it = pushThroughBrackets(it, curString);
-        }
-        it++;
-    }
-    return it;
-}
+#include "expressions.h"
 
 int main(int argc, char *argv[]) {
     //first thing to do is get the file(s) we need to compile
@@ -40,7 +30,7 @@ int main(int argc, char *argv[]) {
     std::string source;
     while(!file.eof()) {
         source.push_back(file.get());
-    }
+    } 
 
     //step 2: remove comments
     std::istringstream ss(source);
@@ -53,26 +43,12 @@ int main(int argc, char *argv[]) {
     }
 
     //step 3: split into expressions
-    //loop through characters until we find ';' but if a '(' comes first we skip to the matching ')' before continuing to look for the ';'
-    std::vector<std::string> expressions;
-    std::string curString = "";
-    for(std::string::iterator it = source.begin(); it != source.end(); it++) {
-        if(*it == '(') {
-            curString.push_back(*it);
-            it++;
-            it = pushThroughBrackets(it, &curString);
-        }
-        if(*it == ';') {
-            curString.push_back(*it);
-            expressions.push_back(curString);
-            curString.clear();
-            continue;
-        }
-        curString.push_back(*it);
-    }
+    std::vector<std::string> expressionStrings = splitBy(source, ';');
 
-    for(int i = 0; i < expressions.size(); i++) {
-        std::cout << expressions[i] << std::endl;
+    //step 4: build syntax tree
+    std::vector<IExpression*>  expressions;
+    for(int i = 0; i < expressionStrings.size(); i++) {
+        expressions.push_back(ExpressionFactory::createExpressionFromSource(expressionStrings[i]));
     }
 
     file.close();

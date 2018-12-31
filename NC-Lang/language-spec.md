@@ -67,7 +67,7 @@ There are 3 `requirements`. These requirements are the name of the function, the
 Note that when a requirement is more than one thing, it is enclosed in brackets. This is so it's very clear to the compiler what is and isn't a requirement, for example this way the compiler doesn't mistake a second argument as the return type.
 
 `Name` is the identifier so it can be referenced and called. The regular identifier rules apply.
-`Arguments` is a list of data needed for the operation of the function. This must be purely `in` and `out` expressions.
+`Arguments` is a list of data needed for the operation of the function. This must be purely `in` and `out` expressions. It may be empty.
 `Body` is the code that is run when the function is called. It consists of any number of any type of expression, but must end with a `return` expression.
 
 ## Variables
