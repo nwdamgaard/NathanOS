@@ -1,0 +1,10 @@
+
+proj_name = ncc
+src = main.cpp
+CC = g++
+
+all:
+	$(CC) $(src) -o $(proj_name)
+
+clean:
+	rm -f ncc
